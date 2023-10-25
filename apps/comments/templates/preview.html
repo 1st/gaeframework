@@ -1,0 +1,20 @@
+{% extends "comments/base.html" %}
+
+{% block title %}{% translate "Preview your comment" %}{% endblock %}
+
+{% block content %}
+  {% load comment %}
+
+  <div class="comment preview">
+    {% if form.errors %}
+      <h3>{% blocktrans count form.errors|length as counter %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h3>
+    {% else %}
+      <h3>{% translate "Preview your comment" %}</h3>
+      <blockquote>{{ comment|linebreaksbr }}</blockquote>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+  {% include "comments/block/form.html" %}
+{% endblock %}

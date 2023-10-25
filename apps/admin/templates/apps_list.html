@@ -1,0 +1,23 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}{% translate "List of applications" %}{% endblock %}
+
+{% block content %}
+  <h3>Administrate</h3>
+
+  <div>
+    <ol>
+      {% for managed_app, models in apps %}
+        <li>
+          <b><a href="/{{ app }}/{{ managed_app }}">{{ managed_app|capfirst }}</a></b>:
+          {% for model in models %}
+            <a href="/{{ app }}/{{ managed_app }}/{{ model.0 }}">{{ model.1|capfirst }}</a>
+            {% if not forloop.last %}|{% endif %}
+          {% endfor %}
+        </li>
+      {% empty %}
+        <li>{% translate "No applications found" %}</li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% load comment %}
+
+{% for entity in entities %}
+  {% get_comment_count for entity as comment_count %}
+
+  <div class="blog entity">
+    <h2><a href="/{{ app }}/{{ entity.details_url }}">{{ entity.title }} - {{ entity.key.name }}</a></h2>
+    {{ entity.description|default:""|escape }}
+    <div class="actions">
+      <b>{{ entity.changed|date:"j M Y, G:i" }}</b>
+      | <a href="/account/{{ blog.author.details_url }}">{{ blog.author }}</a>
+      | <a href="/{{ app }}/{{ entity.details_url }}#comment">{{ comment_count|default:"No" }} comments</a>
+      {% if entity.tags %}
+        | {% translate "Tags" %}:
+        {% for tag in entity.tags %}
+          {{ tag.name }}
+          {% if forloop.last %}, {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if entity.manager %}
+        | <a href="/{{ app }}/{{ entity.edit_url }}">{% translate "Edit" %}</a>
+        | <a href="/{{ app }}/{{ entity.delete_url }}" class="confirm">{% translate "Delete" %}</a>
+      {% endif %}
+    </div>
+  </div>
+{% empty %}
+  {% translate "No entities" %}
+{% endfor %}
+
+{% autoescape off %}
+  {{ entities.render_pages }}
+{% endautoescape %}

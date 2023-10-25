@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block base_title %}{% block title %}{% endblock %} | Blog{% endblock %}
+
+{% block base_content %}
+  {% block content %}{% endblock %}
+{% endblock %}
+
+{% block base_sidebar %}
+  {% block sidebar %}{% endblock %}
+{% endblock %}
+
+{% block base_js %}
+  {% block js %}{% endblock %}
+{% endblock %}
+
+{% block base_css %}
+  <link type="text/css" rel="stylesheet" href="/static/comment/css/base.css">
+  <link type="text/css" rel="stylesheet" href="/static/blog/css/base.css">
+  {% block css %}{% endblock %}
+{% endblock %}

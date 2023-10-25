@@ -1,0 +1,81 @@
+{% extends 'blog.html' %}
+{% load comment blog %}
+
+{% block title %}{% translate "Blog entities" %}{% endblock %}
+
+{% block sidebar %}
+  {% if blog.manager or user.is_admin %}
+  <div class="last">
+    <p class="last">
+      <b>{% translate "Show" %}</b>
+      <a href="?show=published">{% translate "Published" %}</a>,
+      <a href="?show=unpublished">{% translate "Not published" %}</a>
+    </p>
+  </div>
+  {% endif %}
+
+  {% if blog %} {# selected blog #}
+  <div>
+    <h3>{% translate "Latest entities" %}</h3>
+    {% get_recent_entities for blog as recent_entities %}
+    {% for recent_entity in recent_entities %}
+      <p {% if not forloop.last %}class="last"{% endif %}><a href="/{{ app }}/{{ recent_entity.details_url }}">{{ recent_entity.title }}</a></p>
+    {% empty %}
+      <p>{% translate "No entities" %}</p>
+    {% endfor %}
+    <p class="last">
+      <a href="/{{ app }}/"><b>{% translate "Latest entities" %}</b></a>
+      {% if blog.manager %}
+      | <a href="/{{ app }}/{{ blog.key.name }}/new"><b>{% translate "Create new blog entity" %}</b></a>
+      {% endif %}
+    </p>
+  </div>
+  {% else %} {# blog not selected #}
+  <div>
+    <h3>{% translate "Latest blogs" %}</h3>
+    {% get_recent_blogs as recent_blogs %}
+    <p>
+    {% for recent_blog in recent_blogs %}
+      <a href="/{{ app }}/{{ recent_blog.details_url }}">{{ recent_blog.name }}</a><br>
+    {% endfor %}
+    </p>
+    <p class="last">
+      <a href="/{{ app }}/all"><b>{% translate "All blogs" %}</b></a>
+      {% if user %}
+      | <a href="/{{ app }}/new"><b>{% translate "Create new blog" %}</b></a>
+      {% endif %}
+    </p>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for entity in entities %}
+    {% get_comment_count for entity as comment_count %}
+
+    <div class="blog entity">
+      <h2><a href="/{{ app }}/{{ entity.details_url }}">{{ entity.title }}</a></h2>
+      {{ entity.description|default:""|escape }}
+      <div class="actions">
+        <b>{{ entity.changed|date:"j M Y" }}</b>
+        {% translate "from" %} <a href="/account/{{ entity.author.details_url }}">{{ entity.author }}</a>
+        | <a href="/{{ app }}/{{ entity.details_url }}#comment">{{ comment_count|default:"No"|translate }} {% translate "comments" %}</a>
+        {% if entity.tags %}
+          | {% translate "Tags" %}:
+          {% for tag in entity.tags %}
+            {{ tag.name }}
+            {% if forloop.last %}, {% endif %}
+          {% endfor %}post
+        {% endif %}
+        {% if entity.manager %}
+          | <a href="/{{ app }}/{{ entity.edit_url }}">{% translate "Edit" %}</a>
+          | <a href="/{{ app }}/{{ entity.delete_url }}" class="confirm">{% translate "Delete" %}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    {% translate "No blog posts" %}
+  {% endfor %}
+
+  {% pagination entities %}
+{% endblock %}

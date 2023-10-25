@@ -1,0 +1,41 @@
+Create: Создать
+Cancel: Отмена
+Save: Сохранить
+Edit: Изменить
+Delete: Удалить
+Show: Показать
+Published: Опубликованные
+Not published: Не опубликованные
+from: от
+"No": Нет
+comments: комментариев
+
+# B L O G S
+Create new blog: Создать новый блог
+Edit blog: Изменить блог
+Latest blogs: Последние блоги
+Blogs list: Список блогов
+No blogs: Нет блогов
+All blogs: Все блоги
+
+# B L O G   E N T I T I E S
+Blog entries: Список записей блога
+Latest entries: Последние записи
+No entries: Нет записей
+Create new blog entry: Создать новую запись в блоге
+All blog entries: Все записи блога
+New entry: Новая запись
+Tags: Теги
+not defined: не заданы
+
+# models
+Active: Показыать 
+
+# models.Blog
+Blog url: Адресс блога
+Blog name: Имя блога
+
+# models.BlogPost
+Title: Заголовок
+Description: Краткое описание
+Text: Текст

@@ -1,0 +1,22 @@
+.todo {
+}
+.todo .task {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+.todo .task .header {
+  font-size: 150%;
+}
+.todo .task .actions {
+  display: inline;
+  float: right;
+  background-color: inherit;
+  visibility: hidden;
+}
+.todo .task:HOVER .actions {
+  visibility: visible;
+}
+.todo .task .actions A {
+  margin-left: 5px;
+}

@@ -1,0 +1,54 @@
+version: 1.0
+
+urls:
+
+- url:
+  run: blog.entries_list
+  tag: entries_list
+
+- url: tag/(tags)
+  run: blog.entries_list
+  tag: entries_list_tagged
+
+- url: new
+  run: blog.create_entry
+  tag: create_entry
+
+- url: (entry)/edit
+  run: blog.edit_entry
+  tag: edit_entry
+
+- url: (entry)/delete
+  run: blog.delete_entry
+  tag: delete_entry
+
+- url: (entry)
+  run: blog.entry_details
+  tag: entry_details
+
+# application specific configuration
+comments: True
+
+migration:
+  1.0:
+  1.1:
+    Entity:
+      +slug: db.StringProperty('entry url', required=True)
+      +author: db.UserProperty()
+      +name: db.StringProperty(required=True)
+      +text: db.TextProperty(required=True)
+  1.2:
+    Entity > Publication:
+      -text:
+      author: db.UserProperty(auto_current_user_add=True, required=True)
+      name > title: db.StringProperty(required=True)
+      +description: db.StringProperty()
+  1.10:
+    Publication:
+      +created: db.DateTimeProperty(auto_now_add=True)
+      +changed: db.DateTimeProperty(auto_now=True)
+      +active: db.BooleanProperty(default=False)
+  2.0:
+    Publication:
+      +tags: db.StringListProperty()
+  

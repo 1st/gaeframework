@@ -1,0 +1,14 @@
+{% for comment in comment_list %}
+  <div class="comment item">
+    <i title="{{ comment.created|date:"d M Y h:i:s" }}, {{ comment.author.nickname }}">
+      <b>{{ comment.created|date:"d M Y" }}</b>
+      {{ comment.author.nickname }}
+    </i>
+    <p class="last">
+      <b>{{ comment.title }}:</b>
+      {{ comment.text|linebreaksbr }}
+    </p>
+  </div>
+{% empty %}
+  <div class="comment item">No comments</div>
+{% endfor %}

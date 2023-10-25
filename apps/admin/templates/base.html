@@ -1,0 +1,21 @@
+{% extends 'site/base.html' %}
+
+{% block base_title %}{% block title %}{% endblock %} | Admin interface{% endblock %}
+
+{% block base_content %}
+  {% block content %}{% endblock %}
+{% endblock %}
+
+{% block base_sidebar %}
+  {% block sidebar %}{% endblock %}
+{% endblock %}
+
+{% block base_js %}
+  <script type="text/javascript" src="/static/admin/js/base.js"></script>
+  {% block js %}{% endblock %}
+{% endblock %}
+
+{% block base_css %}
+  <link type="text/css" rel="stylesheet" href="/static/admin/css/base.css">
+  {% block css %}{% endblock %}
+{% endblock %}

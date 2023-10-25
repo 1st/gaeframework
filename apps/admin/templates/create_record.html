@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% block sidebar %}
+  {% for collection, field in references %}
+    {% for record in collection %}
+      {{ record }} {{ field }}
+    {% endfor %}
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+  <h3>
+    <a href="/{{ app }}">Administrate</a>
+    &raquo;
+    <a href="/{{ app }}/{{ managed_app }}">{{ managed_app|capfirst }}</a>
+    &raquo;
+    <a href="/{{ app }}/{{ managed_app }}/{{ model }}">{{ model_name|capfirst }}</a>
+    &raquo;
+    Create new record
+  </h3>
+
+  <form method="POST" action="" class="admin_create_record">
+    <input type="hidden" name="previous_page" value="{{ previous_page }}">
+    <table>
+      {{ form }}
+      <tr>
+        <th>&nbsp;</th>
+        <td>
+          <input type="submit" value="Save">
+          <a href="{{ previous_page }}">Cancel</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

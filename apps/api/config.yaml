@@ -1,0 +1,7 @@
+version: 1.0
+
+urls:
+
+- url: (app_name)/(action)
+  run: api.run_api_method
+  tag: run_api_method

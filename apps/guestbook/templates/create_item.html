@@ -1,0 +1,16 @@
+{% extends 'guestbook/base.html' %}
+
+{% block title %}New record{% endblock %}
+
+{% block content %}
+  <h3>Create item</h3>
+
+  <form method="POST" action="">
+    <input type="hidden" name="previous_page"  value="{{ previous_page }}">
+    <table>
+      {{ form.content }}
+    </table>
+    <input type="submit" value="Save">
+    <a href="{{ previous_page }}">Cancel</a>
+  </form>
+{% endblock %}

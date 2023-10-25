@@ -1,0 +1,21 @@
+urls:
+- url:
+  run: admin.apps_list
+
+- url: (app_name)
+  run: admin.models_list
+
+- url: (app_name)/(model_name)
+  run: admin.model_records
+
+- url: (app_name)/(model_name)/new
+  run: admin.create_record
+
+- url: (app_name)/(model_name)/edit/(record_key)
+  run: admin.edit_record
+
+- url: (app_name)/(model_name)/delete
+  run: admin.delete_record
+
+- url: (app_name)/(model_name)/delete/(record_key)
+  run: admin.delete_record

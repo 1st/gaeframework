@@ -1,0 +1,19 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}List of objects in application {{ managed_app }}{% endblock %}
+
+{% block content %}
+  <h3>
+    <a href="/{{ app }}">Administrate</a>
+    &raquo;
+    {{ managed_app|capfirst }}
+  </h3>
+
+  <div>
+    <ol>
+      {% for model in models %}
+        <li><a href="/{{ app }}/{{ managed_app }}/{{ model.0 }}">{{ model.1|capfirst }}</a></li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}

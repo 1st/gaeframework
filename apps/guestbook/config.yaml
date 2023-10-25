@@ -1,0 +1,7 @@
+urls:
+- url:
+  run: guestbook.items_list
+
+- url: create_item
+  run: guestbook.create_item
+  tag: create_item

@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+  <h3>
+    <a href="/{{ app }}">Administrate</a>
+    &raquo;
+    <a href="/{{ app }}/{{ managed_app }}">{{ managed_app|capfirst }}</a>
+    &raquo;
+    <a href="/{{ app }}/{{ managed_app }}/{{ model }}">{{ model_name|capfirst }}</a>
+    &raquo;
+    Edit record
+  </h3>
+
+  <form method="POST" action="" class="admin_edit_record">
+    <input type="hidden" name="previous_page" value="{{ previous_page }}">
+    <table>
+      {{ form }}
+    </table>
+    {% for collection, field in references %}
+      ={{ field }}=
+      {% for record in collection %}
+        {% if field %}
+          {{ record.field }}
+        {% else %}
+          {{ record }} {{ field }}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    <input type="submit" value="Save">
+    <a href="/{{ app }}/{{ managed_app }}/{{ model }}/delete/{{ record_id }}" class="button confirm" title="Delete record">Delete</a>
+    <a href="{{ previous_page }}">Cancel</a>
+  </form>
+{% endblock %}

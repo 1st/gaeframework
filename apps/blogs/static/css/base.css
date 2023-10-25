@@ -1,0 +1,41 @@
+/**
+ * Article application
+ */
+#page>.content .blog {
+  margin-bottom: 10px;
+}
+#page>.content .blog>h3 {
+  padding: 0;
+  margin: 0 0 50px 0;
+}
+.blog h3 a {
+  text-decoration: none;
+}
+.blog>p {
+  margin-left: 0px;
+}
+.blog .actions {
+  font-size: 90%;
+  margin: 5px -10px 0 -10px;
+  padding: 5px 10px;
+  font-family: Arial,sans-serif;
+  background-color: #f2f2f2;
+}
+.blog .actions a {
+  text-decoration: none;
+}
+.blog blockquote {
+  margin: 10px 20px;
+  background-color: #eee;
+  color: #777;
+  font-style: italic;
+  font-size: 120%;
+  padding: 10px;
+}
+form.blog {
+  margin: auto;
+  padding: 5px;
+  width: 300px;
+  border: solid 3px #eee;
+  background-color: #F8F8F8;
+}

@@ -1,0 +1,68 @@
+{% extends 'admin/base.html' %}
+{% load admin %}
+
+{% block title %}List of records in model {{ app|capfirst }}.{{ model|capfirst }}{% endblock %}
+
+{% block content %}
+  <h3>
+    <a href="/{{ app }}">Administrate</a>
+    &raquo;
+    <a href="/{{ app }}/{{ managed_app }}">{{ managed_app|capfirst }}</a>
+    &raquo;
+    {{ model_name|capfirst }}
+  </h3>
+
+  <form action="/{{ app }}/{{ managed_app }}/{{ model }}" method="post" class="admin_model_records">
+    <a href="/{{ app }}/{{ managed_app }}/{{ model }}/new" class="button">New record</a>
+    <input type="submit" name="delete" value="Delete" class="confirm disabled" title="Delete selected records" disabled="disabled">
+    <input type="submit" name="save" value="Save" class="confirm disabled" title="Save changes" disabled="disabled">
+    <table>
+      <tr>
+        <th width="20px;" class="center">
+          <input type="checkbox" title="Select all records">
+        </th>
+        {% for field in fields %}
+          <th>{{ field.name|capfirst }}</th>
+        {% endfor %}
+        <th width="80px;">
+          {% translate "Actions" %}
+        </th>
+      </tr>
+      {% for record in records %}
+        <tr class="horizontal {% cycle even,odd %}">
+          <td>
+            <input type="checkbox" title="Select record" value="{{ record.key }}">
+          </td>
+          {% for field in fields %}
+            {% get_attr record field.name as "record_field" %}
+            {# SHOW FIELD VALUE #}
+            <td class="{% if field.type == "Boolean" %}center{% endif %}">
+              {% if field.type == "Boolean" %}
+                <input type="checkbox" name="{{ record_field.name }}" value="{{ record_field }}" {% if record_field %}checked="checked"{% endif %}>
+              {% else %}
+                {{ record_field }}
+              {% endif %}
+            </td>
+          {% endfor %}
+          <td class="actions">
+            <a href="/{{ app }}/{{ managed_app }}/{{ model }}/edit/{{ record.key }}" class="">Edit</a>
+            <a href="/{{ app }}/{{ managed_app }}/{{ model }}/delete/{{ record.key }}" class="confirm">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td>&nbsp;</td>
+          <td class="center" colspan="{{fields|length}}">{% translate "No entities found" %}</td>
+          <td>&nbsp;</td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <th>&nbsp;</th>
+        <th class="center" colspan="{{fields|length}}">
+          {% pagination records %}
+        </th>
+        <th>&nbsp;</th>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

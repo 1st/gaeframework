@@ -1,0 +1,36 @@
+urls:
+- url:
+  run: blogs.entities_list
+
+- url: all
+  run: blogs.blogs_list
+
+- url: new
+  run: blogs.blog_create
+
+- url: (blog)/edit
+  run: blogs.blog_edit
+
+- url: (blog)/delete
+  run: blogs.blog_delete
+
+- url: (blog)/new
+  run: blogs.entity_create
+
+- url: (blog)/(entry)/edit
+  run: blogs.entity_edit
+
+- url: (blog)/(entry)/delete
+  run: blogs.entity_delete
+
+- url: (blog)
+  run: blogs.entities_list
+
+- url: (blog)/tag/(tags)
+  run: blogs.entities_list
+
+- url: (blog)/(entry)
+  run: blogs.entity_details
+
+# application specific configuration
+comments: True

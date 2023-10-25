@@ -1,0 +1,58 @@
+/* Blog application */
+
+DIV.comments {
+  margin-top: 25px;
+}
+DIV.comments > H3 > A {
+  color: inherit;
+}
+
+/* Entities list */
+.blog.entry {
+  margin-bottom: 10px;
+}
+.blog.entry h2,
+.blog.entry h2 a {
+  padding: 0;
+  font-size: 20px;
+  text-decoration: none;
+}
+.blog.entry p {
+  margin-left: 0px;
+}
+.blog.entry .actions {
+  display: inline;
+  margin: 5px -10px 0 -10px;
+  padding: 5px 10px;
+  font-family: Arial,sans-serif;
+  background-color: #fafafa;
+}
+.blog.entry .actions a {
+  text-decoration: none;
+  margin-right: 5px;
+}
+.blog.entry .actions a.edit,
+.blog.entry .actions a.delete {
+  display: none;
+}
+.blog.entry .actions:HOVER a.edit,
+.blog.entry .actions:HOVER a.delete {
+  display: inline;
+}
+
+/* Blog form */
+form.blog {
+  margin: auto;
+  padding: 5px;
+  border: solid 3px #eee;
+  background-color: #F8F8F8;
+}
+form.blog table {
+  width: 100%;
+}
+form.blog table textarea,
+form.blog table input[type=text] {
+  width: 100%;
+  padding: 5px;
+  margin: 0 -5px;
+}

@@ -1,0 +1,25 @@
+{% load blog %}
+
+{% for entry in entries %}
+  {% get_comment_count for entry as comment_count %}
+
+  <div class="blog entry">
+    <h2><a href="{% url blog.entry_details entry=entry %}">{{ entry.title }}</a></h2>
+    
+    {% if entry.description %}<p class="description">{{ entry.description|escape }}</p>{% endif %}
+
+    <div class="actions">
+      <b>{{ entry.changed|date:"j M Y" }}</b>
+      {% translate "from" %} <a href="{% url user.user_profile user=entry.author %}">{{ entry.author }}</a>
+      <a href="{% url blog.entry_details entry=entry %}#comments">{{ comment_count|default:"No"|translate }} {% translate "comments" %}</a>
+      {% if user.is_admin %}
+        <a href="{% url blog.edit_entry entry=entry %}" class="edit">{% translate "Edit" %}</a>
+        <a href="{% url blog.delete_entry entry=entry %}" class="delete confirm">{% translate "Delete" %}</a>
+      {% endif %}
+    </div>
+  </div>
+{% empty %}
+  {% translate "No entries" %}
+{% endfor %}
+
+{% pagination entries %}

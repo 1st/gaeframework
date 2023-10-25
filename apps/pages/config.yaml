@@ -1,0 +1,4 @@
+urls:
+
+- url: (template)
+  run: pages.render

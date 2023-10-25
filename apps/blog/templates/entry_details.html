@@ -1,0 +1,60 @@
+{% extends 'blog/base.html' %}
+{% load blog %}
+
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block base_description %}{{ entry.description }}{% endblock %}
+
+{% block sidebar %}
+  <div class="blog entries">
+    <h3>{% translate "Latest entries" %}</h3>
+    {% get_recent_entries as recent_entries %}
+    {% for entry in recent_entries %}
+      <p {% if forloop.last %}class="last"{% endif %}><a href="{% url blog.entry_details entry=entry %}">{{ entry.title }}</a></p>
+    {% empty %}
+      <p class="last">{% translate "No entries" %}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="blog entry">
+    <h1>{{ entry.title }} <g:plusone size="small"></g:plusone></h1>
+
+    <blockquote>
+      {% if entry.description %}
+        <p>{{ entry.description|escape }}</p>
+      {% endif %}
+      <p class="last">
+        <b>{% translate "Tags" %}:</b>
+        {% for tag in entry.tags %}
+          <a href="{% url blog.entries_list_tagged tags=tag %}">{{ tag }}</a>
+        {% empty %}
+          <i>{% translate "not defined" %}</i>
+        {% endfor %}
+      </p>
+    </blockquote>
+
+    {% autoescape off %}
+      {{ entry.text|default:""|wiki }}
+    {% endautoescape %}
+
+    <div class="actions">
+      <b>{{ entry.created|date:"j M Y, G:i" }}</b>
+      {% if entry.changed.date != entry.created.date %}
+      <i>(edited {{ entry.changed|date:"j M Y, G:i" }})</i>
+      {% endif %}
+      {% translate "from" %} <a href="{% url user.user_profile user=entry.author %}">{{ entry.author }}</a>
+      {% if user.is_admin %}
+        <a href="{% url blog.edit_entry entry=entry %}" class="edit">{% translate "Edit" %}</a>
+        <a href="{% url blog.delete_entry entry=entry %}" class="delete confirm">{% translate "Delete" %}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="comments">
+    <h3><a name="comment_list">{% translate "Comments" %}</a></h3>
+    <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="{{ request.host_url }}{{ current_page }}" num_posts="5" width="640"></fb:comments>
+  </div>
+
+{% endblock %}

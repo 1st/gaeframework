@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{% translate "Edit blog entry" %}{% endblock %}
+
+{% block content %}
+  <h1>{% translate "Edit blog entry" %}</h1>
+
+  <form method="POST" action="" class="blog entry">
+    <input type="hidden" name="previous_page"  value="{{ previous_page }}">
+    <table>
+      {{ form }}
+    </table>
+    <input type="submit" value="{% translate "Save" %}">
+    <a href="{{ previous_page }}">{% translate "Cancel" %}</a>
+  </form>
+{% endblock %}

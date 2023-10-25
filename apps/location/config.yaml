@@ -1,0 +1,3 @@
+urls:
+- url: city
+  run: location.cities_list

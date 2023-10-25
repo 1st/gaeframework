@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load blog %}
+
+{% block title %}{% translate "Blog entries" %}{% endblock %}
+
+{% block sidebar %}
+  {% if user.is_admin %}
+  <div class="blog">
+    <h3>Actions</h3>
+    <p>
+      <b>{% translate "Show" %}</b>
+      <a href="?show=published">{% translate "Published" %}</a> or
+      <a href="?show=unpublished">{% translate "Not published" %}</a>
+    </p>
+    <p class="last">
+      <a href="{% url blog.create_entry %}">{% translate "New entry" %}</a>
+    </p>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% include "blog/block/entries_list.html" %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'blog.html' %}
+
+{% block title %}{% translate "Blogs list" %}{% endblock %}
+
+{% block sidebar %}
+  {% if user %}
+  <div class="last">
+    <p>
+      <b>{% translate "Show" %}</b>
+      <a href="?show=published">{% translate "Published" %}</a>,
+      <a href="?show=unpublished">{% translate "Not published" %}</a>
+    </p>
+    <p class="last">
+      <a href="/{{ app }}/new"><b>{% translate "Create new blog" %}</b></a>
+    </p>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for blog in blogs %}
+    <div class="blog">
+      <h2><a href="/{{ app }}/{{ blog.details_url }}">{{ blog.name }}</a></h2>
+      <div class="actions">
+        <b>{{ blog.created|date:"j M Y, G:i" }}</b>
+        | <a href="/account/{{ blog.author.details_url }}">{{ blog.author }}</a>
+        {% if blog.manager %}
+          | <a href="/{{ app }}/{{ blog.edit_url }}">{% translate "Edit" %}</a>
+          | <a href="/{{ app }}/{{ blog.delete_url }}" class="confirm">{% translate "Delete" %}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    {% translate "No blogs" %}
+  {% endfor %}
+
+  {% pagination blogs %}
+{% endblock %}

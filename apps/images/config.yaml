@@ -1,0 +1,11 @@
+version: 1.0
+
+urls:
+
+- url: upload_image
+  run: images.upload_image
+  tag: upload_image
+
+- url: (image_key)
+  run: images.show_image
+  tag: show_image
