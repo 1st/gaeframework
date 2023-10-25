@@ -1,4 +1,4 @@
-# GAEframework
+# GAE framework
 
 GAE framework helps you create web sites quickly on Google App Engine.
 
