@@ -1,0 +1,31 @@
+application: [project_name]
+version: 1
+runtime: python
+api_version: 1
+default_expiration: "1d"
+
+builtins:
+- remote_api: on
+- appstats: on
+
+inbound_services:
+- warmup
+
+handlers:
+  # site favicon
+- url: /favicon.ico
+  static_files: apps/site/static/img/favicon.ico
+  upload: apps/site/static/img/favicon.ico
+
+  # serving static files: static/app_name/... -> app_name/static/...
+- url: /static/(\w+)/(.*)
+  static_files: apps/\1/static/\2
+  upload: apps/(\w+)/static/(.*)
+  
+  # pre-load code to instance
+- url: /_ah/warmup
+  script: main.py
+
+  # run GAE framework request handler
+- url: /.*
+  script: main.py

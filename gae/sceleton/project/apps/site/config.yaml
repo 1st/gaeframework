@@ -1,0 +1,32 @@
+urls:
+
+   # pre-load code before real request to be executed
+ - url: _ah/warmup
+   run: site.warmup
+
+   # cron jobs with GAE framework environment
+ - url: _ah/cron
+   run: site.cron
+
+   # run data migration
+ - url: _ah/data_migration
+   run: site.data_migration
+
+   # homepage
+ - url: /
+   run: site.index
+
+   # map 'user' application
+ - url: user/
+   run: user
+
+
+# site configuration
+language: en
+languages: [en, fr, de, ru, ua]
+
+
+# redefine configuration for each application
+apps:
+  user:
+    admins: [admin]

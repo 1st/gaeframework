@@ -1,0 +1,8 @@
+urls:
+
+- url:
+  run: index
+  tag: index
+
+
+# application specific configuration

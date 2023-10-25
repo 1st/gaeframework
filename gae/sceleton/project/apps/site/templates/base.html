@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <title>{% block base_title %}Welcome to my site!{% endblock %}k</title>
+  <meta name="description" content="{% block base_description %}{% endblock %}">
+  <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/base/jquery-ui.css">
+  <link type="text/css" rel="stylesheet" href="/static/site/css/base.css">
+  {% block base_css %}{% endblock %}
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/site/js/base.js"></script>
+  {% block base_js %}{% endblock %}
+</head>
+<body>
+
+<div id="menu">
+  <p class="login">
+    {% if user %}
+      Hello <b>{{ user }}</b>! <a href="{% url user.logout %}">Logout</a>
+    {% else %}
+      <a href="{% url user.login %}">Login</a> to site
+    {% endif %}
+  </p>
+  <a href="/">Home</a>
+  <a href="/admin">Admin</a>
+  <a href="/blog">Blog</a>
+  <a href="/guestbook">Guest book</a>
+  <a href="/todo">Todo</a>
+</div>
+
+<div id="page">
+  <div class="sidebar">
+    {% block base_sidebar %}{% endblock %}
+    <div class="center last">Hello World!</div>
+  </div>
+
+  <div class="content">
+    {% block base_content %}{% endblock %}
+  </div>
+  <div class="clear"></div>
+</div>
+
+<div id="footer">
+  <a href="http://twitter.com/gaeframework" target="_blank">Twitter</a>
+  <a href="http://www.facebook.com/group.php?gid=395531586756" target="_blank">Facebook</a>
+  <a href="http://www.youtube.com/user/GAEframework" target="_blank">YouTube</a>
+  <a href="http://groups.google.com/group/gaeframework" target="_blank">Support group</a>
+  <a href="http://code.google.com/p/gaeframework/wiki/Docs" target="_blank">Documentation</a>
+  <a href="http://code.google.com/p/gaeframework/downloads/list" target="_blank">Download</a>
+  <a href="http://code.google.com/p/gaeframework/source/checkout" target="_blank">Source code</a>
+
+  <a href="http://gaeframework.com" class="logo" title="Powered by GAE framework" target="_blank">
+    <img src="/static/site/img/powered_by_gae.png" alt="[ GAE framework ]">
+  </a>
+</div>
+
+</body>
+</html>

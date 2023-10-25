@@ -1,0 +1,44 @@
+{% extends 'site/base.html' %}
+
+{% block base_title %}GAE framework - python web framework for Google App Engine{% endblock %}
+
+{% block base_content %}
+  <h1>GAE framework - python web framework for Google App Engine</h1>
+
+  <blockquote>
+    <b>GAE framework</b> is a web framework that's designed for high-load web sites.
+    Pluggable applications will help you save time for creation of various web sites<br><br>
+    Because Django not fully compatible with Google App Engine, we have implemented
+    project similar with Django, but with many useful improvements.
+  </blockquote>
+  
+  <p>With GAE framework you can create flexible web applications on Google App Engine quickly.</p>
+  
+  <p>Start from dive into <a href="http://code.google.com/p/gaeframework/wiki/Features">features list</a> and
+  which <a href="http://code.google.com/p/gaeframework/wiki/Sites">sites build on GAE framework</a>.</p>
+  
+  <p>Ready to use? <a href="http://code.google.com/p/gaeframework/wiki/Start">Quick start</a> explain
+  how to install GAE framework and run web site on Google App Engine.</p>
+  
+  <p>Finally read <a href="http://code.google.com/p/gaeframework/wiki/Docs?tm=6">full documentation</a>
+  to learn more about GAE framework and Google App Engine for Python developers.</p>
+  
+  <h3>What's next?</h3>
+  
+  <p><a href="{% url user.registration %}">Sign-in</a> as developer. You will be appear on page of
+  <a href="/developers">developers</a>.</p>
+  
+  <p>You can <a href="http://groups.google.com/group/gaeframework">join to support group</a>. This is place
+  where you can ask questions about Google App Engine and Python.</p>
+  
+  <p><a href="/answers">Collaborative ideas</a> helps us select high-priority tasks. Add your ideas
+  and vote on already added ideas.</p>
+
+  <p>News and updates also available in our <a href="/blog">blog</a>.</p>
+  
+  <p>You can add your Google App Engine application to our <a href="/apps">app store</a>
+  - list of web applications build on GAE framework.
+  Developers of the best applications will be rewarded!</p>
+  
+  <p class="last">We always believe in you!</p>
+{% endblock %}

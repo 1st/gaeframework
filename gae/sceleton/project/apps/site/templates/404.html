@@ -1,0 +1,12 @@
+{% extends 'site/base.html' %}
+
+{% block base_title %}Page not found{% endblock %}
+
+{% block base_content %}
+  <h1>Page not found!</h1>
+
+  <p>
+    <b>This page not exists.</b>
+    Please try again after few minutes, or <a href="{{ previous_page }}">go back</a>.
+  </p>
+{% endblock %}

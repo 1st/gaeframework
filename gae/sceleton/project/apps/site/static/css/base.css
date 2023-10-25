@@ -1,0 +1,288 @@
+/**
+ * Global settings.
+ */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8F8F8;
+}
+* {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+}
+a {
+  color: #800000;
+  text-decoration: none;
+}
+a:HOVER {
+  color: #ff0000;
+}
+a.selected {
+  background-color: #C9D7F1;
+  color: black;
+  padding: 0 5px;
+  text-decoration: none;
+}
+a.selected:HOVER {
+  background-color: transparent;
+}
+/* HEADERS */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: normal;
+}
+h1 {
+  font-size: 22px;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 15px;
+}
+h6 {
+  font-size: 14px;
+}
+img {
+  border: none;
+}
+p {
+  margin-top: 0;
+}
+code {
+  background-color: #eee;
+  padding: 2px 5px;
+}
+.border {
+  border: solid 1px #E9F1F7;
+  padding: 2px;
+}
+.center {
+  text-align: center;
+}
+.hidden {
+  visibility: hidden;
+}
+.hide {
+  display: none;
+}
+.clear {
+  clear: both;
+}
+.last {
+  float: none;
+  margin-bottom: 0;
+}
+form {
+  margin: 0;
+  padding: 0;
+}
+form input[type=text],
+form input[type=password],
+form select,
+form textarea {
+  border: solid 1px #ddd;
+  padding: 0 3px;
+  margin: 0;
+}
+/* FIELD ERRORS */
+form ul.errorlist {
+  list-style: none;
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #ffd5d5;
+  font-size: 90%;
+}
+form .error {
+  background-color: #ffd5d5;
+}
+/* FORM BUTTONS */
+button,
+input[type=button],
+input[type=submit],
+input[type=reset],
+a.button {
+  background-color: #ddd;
+  color: inherit;
+  border: solid 1px #ccc;
+  padding: 2px 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  margin: 0;
+}
+
+button.mini,
+input[type=button].mini,
+input[type=submit].mini,
+input[type=reset].mini,
+a.button.mini {
+  font-size: 80%;
+  padding: 0px 2px;
+}
+button:HOVER,
+input[type=button]:HOVER,
+input[type=submit]:HOVER,
+input[type=reset]:HOVER,
+a.button:HOVER {
+  background-color: #eee;
+}
+a.button.confirm:HOVER {
+  color: red;
+}
+table th {
+  text-align: left;
+  font-weight: normal;
+  font-size: 90%;
+}
+blockquote {
+  border-left: solid 5px #0fb7ef;
+  padding: 10px;
+  margin: 10px 30px;
+}
+
+
+/* Menu */
+#menu {
+  width: 950px;
+  margin: 20px auto 0px auto;
+  clear: both;
+  height: 20px;
+}
+#menu>* {
+  vertical-align: middle;
+}
+#menu>A {
+  margin-left: 2px;
+  padding: 2px 3px;
+}
+#menu>A:HOVER {
+  background-color: white;
+}
+#menu>.login {
+  float: right;
+  margin: 3px;
+}
+
+/* Page */
+#page {
+  width: 950px;
+  border: solid 5px #f5f5f5;
+  background-color: white;
+  margin: 0px auto 5px auto;
+}
+
+
+/* Page content*/
+#page>.content {
+  padding: 5px 10px;
+  margin-right: 290px;
+}
+
+
+/* Page sidebar */
+#page>.sidebar {
+  float: right;
+  width: 280px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  border-left: solid 5px white;
+  border-bottom: solid 5px white;
+}
+#page>.sidebar>div {
+  padding: 5px;
+  background-color: #fafafa;
+  border-right-width: 0;
+  margin-bottom: 10px;
+}
+#page>.sidebar>div>h3 {
+  padding: 3px 5px;
+  margin: -5px -5px 5px -5px;
+  border-bottom: solid 1px #eee;
+}
+#page>.sidebar>div>h3>a {
+  color: black;
+}
+#page>.sidebar>div.center>h3 {
+  text-align: left;
+}
+/* Download button */
+#page>.sidebar>div.button {
+  width: 232px;
+  height: 65px;
+  font-size: 14px;
+  color: white;
+  background-image: url("/static/site/img/download.png");
+  border: none;
+  padding: 10px 20px 10px 20px;
+}
+#page>.sidebar>div.button A {
+  display: block;
+  color: white;
+  font-weight: bold;
+}
+#page>.sidebar>div.button A:HOVER {
+  color: yellow;
+}
+#page>.sidebar>div.button A.download {
+  font-size: 22px;
+}
+#page>.sidebar>div.button A.source {
+  margin-top: 3px;
+}
+
+
+/* Page footer */
+#footer {
+  width: 950px;
+  margin: auto;
+  clear: both;
+  height: 40px;
+}
+#footer>A {
+  margin-left: 2px;
+  padding: 2px 3px;
+}
+#footer>A:HOVER {
+  background-color: white;
+}
+#footer img {
+  vertical-align: middle;
+}
+#footer>.logo {
+  float: right;
+}
+
+
+/* Pagination */
+.pages {
+  text-align: center;
+}
+.pages>a {
+  border: solid 1px #eee;
+  margin: 2px;
+  padding: 1px 3px;
+}
+.pages>a.current:HOVER,
+.pages>a:HOVER {
+  border: solid 1px #ddd;
+}
+.pages>a.current {
+  font-weight: bolder;
+  color: inherit;
+}
+.pages>a.first {
+}
+.pages>a.last {
+}
+.pages>a.back {
+}
+.pages>a.next {
+}

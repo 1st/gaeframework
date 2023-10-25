@@ -1,0 +1,26 @@
+"Yes": "Yes"
+"yes": "yes"
+"No": "No"
+"no": "no"
+Create: Create
+Edit: Edit
+Save: Save
+Delete: Delete
+Cancel: Cancel
+Login: Login
+Logout: Logout
+
+
+# form: default choice
+"---------": -- Select --
+
+
+# forms: validation
+Value is too short: Value is too short
+
+
+# pagination
+back: back
+next: next
+Page: Page
+from: from

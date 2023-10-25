@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <title>Debug page</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <style type="text/css">
+  body {width: 950px; margin: auto; border: solid 2px #fafafa; padding: 0 10px;}
+  a {text-decoration: none; padding: 2px 5px; color: #0169c9;}
+  a:HOVER {background-color: #b3defd;}
+  a.hideall {margin-left: 10px;}
+  pre, div.frames {margin-left: 10px; padding: 10px; background: #fafafa; overflow: auto;}
+  div.frames {height: 500px;}
+  div.frames>.frame {white-space: nowrap;}
+  div.frames>.frame>big {color: #888;}
+  div.frames>.frame>big>B {color: black;}
+  div.frames>.frame>.vars {padding: 5px 5px 5px 20px; background-color: #eee;  margin: 5px 0 10px 0;}
+  div.frames>.frame>.vars>.var>.contents {margin-right: 10px;}
+  .hide {display: none;}
+  </style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("a").click(function(){
+      // hide all opened
+      if ($(this).hasClass("hideall")) {
+        $(".hide").slideUp("fast");
+      }
+      // hide/show next tag contents
+      else {
+        $(this).html($(this).next().is(':visible') && "show &darr;" || "hide &uarr;");
+        $(this).next().slideToggle("fast");
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+
+<div>
+  <h1>{{status_code|default:"Undefined"}} error occurred</h1>
+  <h3>{{ error }}</h3>
+  <p>Current page executed with errors. Below we present information for the
+  future explanation where you can found this problem</p>
+</div>
+
+<div class="traceback">
+  <h2>Traceback</h2>
+  
+  <a href="#" class="hideall">hide all &uarr;</a>
+  <div class="frames">
+    {% for frame, vars in traceback %}
+      <div class="frame">
+        <big><b>{{ frame.func }}</b> (line {{ frame.line }}) in {{ frame.file }}</big>
+        <a href="#">show &darr;</a>
+        <div class="vars hide">
+        {% for var_name, var_repr, var_value in vars %}
+          <div class="var">
+            <b>{{ var_name }}</b> = {{ var_repr }}
+            {% if var_value %}
+              <a href="#">show &darr;</a>
+              <pre class="contents hide">{{ var_value }}</pre>
+            {% endif %}
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="request">
+  <h2>Request</h2>
+  <pre>{{request}}</pre>
+</div>
+
+</body>
+</html>

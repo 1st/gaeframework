@@ -1,0 +1,12 @@
+{% extends 'site/base.html' %}
+
+{% block base_title %}Server error{% endblock %}
+
+{% block base_content %}
+  <h1>Server error</h1>
+
+  <p>
+    <b>This page executed with errors.</b>
+    Please try again after few minutes, or <a href="{{ previous_page }}">go back</a>.
+  </p>
+{% endblock %}

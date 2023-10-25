@@ -1,0 +1,16 @@
+<div class="pages">
+  {% if paginator.has_previous %}
+  <a href="{{ paginator.previous_page_url }}">&larr; {% translate "back" %}</a>
+  {% endif %}
+
+  <span class="current">
+    {% translate "Page" %}
+    {{ paginator.page|default:"1" }}
+    {% translate "from" %}
+    {{ paginator.total_pages|default:"1" }}
+  </span>
+
+  {% if paginator.has_next %}
+  <a href="{{ paginator.next_page_url }}">{% translate "next" %} &rarr;</a>
+  {% endif %}
+</div>
