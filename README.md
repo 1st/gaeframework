@@ -13,3 +13,7 @@ pip install gaeframework
 ```
 
 Read more: https://pypi.org/project/gaeframework/
+
+## Docs
+
+Old (documentation)[https://docs.google.com/document/d/1GSls-lcfmhSeYFhHgmBVnwMQg0QRYWKepfNSt-0zCQY/edit] is available on Google Docs.
